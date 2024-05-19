@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Accident Prediction</title>
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* Reset some default styling */
+    body, h1, h2, form, label, input, select {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background: #3b3291;
+        color: white;
+        min-height: 100vh; /* Ensure gradient covers entire viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px); /* Glass-like effect */
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    select, input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    input[type="submit"] {
+        background-color: #7a2cc8;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #802ee4;
+    }
+    option {
+        background-color: #7a2cc8; /* Default background color for options */
+        color: white; /* Default text color for options */
+    }
+
+    /* Style for selected option */
+    option:checked {
+        background-color: #802ee4; /* Selected option background color */
+        color: #fff; /* Selected option text color */
+    }
+</style>
+  <body>
+    <div class="container"><h1>Accident Prediction</h1>
+        <h2>Enter Below Details</h2>
+    <form id="predictionForm">
+      <label for="weather">Weather:</label>
+      <select id="weather" name="weather">
+        <option value="0">Clear</option>
+        <option value="1">Cloudy</option>
+        <option value="2">Dust Storm</option>
+        <option value="3">Fine</option>
+        <option value="4">Flooding of Slipways/Rivulets</option>
+        <option value="5">Fog / Mist</option>
+        <option value="6">Hail or Sleet</option>
+        <option value="7">Heavy Rain</option>
+        <option value="8">Light Rain</option>
+        <option value="9">Mist or Fog</option>
+        <option value="10">Others</option>
+        <option value="11">Snow</option>
+        <option value="12">Strong Wind</option>
+        <option value="13">Very Cold</option>
+        <option value="14">Very Hot</option>
+        <option value="15">Wind</option></select
+      >
+
+      <label for="district">District:</label>
+      <select id="district" name="district">
+        <option value="0">Bagalkot</option>
+        <option value="1">Ballari (Bellary)</option>
+        <option value="2">Belagavi City (Belgaum)</option>
+        <option value="3">Belagavi Dist (Belgaum)</option>
+        <option value="4">Bengaluru City</option>
+        <option value="5">Bengaluru Dist</option>
+        <option value="6">Bidar</option>
+        <option value="7">Chamarajanagar</option>
+        <option value="8">Chickballapura (Chikkaballapur)</option>
+        <option value="9">Chikkamagaluru (Chikmagalur)</option>
+        <option value="10">Chitradurga</option>
+        <option value="11">Dakshina Kannada</option>
+        <option value="12">Davanagere</option>
+        <option value="13">Dharwad</option>
+        <option value="14">Gadag</option>
+        <option value="15">Hassan</option>
+        <option value="16">Haveri</option>
+        <option value="17">Hubballi Dharwad City</option>
+        <option value="18">K.G.F</option>
+        <option value="19">Kalaburagi (Gulbarga)</option>
+        <option value="20">Kalaburagi City (Gulbarga)</option>
+        <option value="21">Karnataka Railways</option>
+        <option value="22">Kodagu (Coorg)</option>
+        <option value="23">Kolar</option>
+        <option value="24">Koppal</option>
+        <option value="25">Mandya</option>
+        <option value="26">Mangaluru City</option>
+        <option value="27">Mysuru City (Mysore)</option>
+        <option value="28">Mysuru Dist (Mysore)</option>
+        <option value="29">Raichur</option>
+        <option value="30">Ramanagara</option>
+        <option value="31">Shivamogga (Shimoga)</option>
+        <option value="32">Tumakuru (Tumkur)</option>
+        <option value="33">Udupi</option>
+        <option value="34">Uttara Kannada (Karwar)</option>
+        <option value="35">Vijayanagara</option>
+        <option value="36">Vijayapur (Bijapur)</option>
+        <option value="37">Yadgir</option>
+      </select>
+
+      <label for="accident_location">District:</label>
+      <select name="accident_location" id="accident_location">
+        <option value="0">City/Town</option>
+        <option value="1">Rural Areas</option>
+        <option value="2">Villages settlement</option>
+      </select>
+
+      
+      <label>Number Of Vehicles:</label>
+      <input
+        type="text"
+        name="numberOfVehicles"
+        id="numberOfVehicles"
+      />
+
+      <label>Latitude:</label>
+      <input type="text" name="latitude" id="latitude" />
+
+      <label>Longitude:</label>
+      <input type="text" name="longitude" id="longitude" />
+
+      <input type="submit" value="Predict" />
+    </form>
+    <br>
+    <div id="prediction_result"></div></div>
+   
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("predictionForm").addEventListener("submit", async function (event) {
+                event.preventDefault();
+        
+                // Create a FormData object from the form element
+                const formData = new FormData(document.getElementById("predictionForm"));
+        
+                try {
+                    // Send a POST request to the server with the form data
+                    const response = await fetch('/predict', {
+                        method: 'POST',
+                        body: formData
+                    });
+        
+                    // Check if the response is OK
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+        
+                    // Parse the JSON response
+                    const data = await response.json();
+        
+                    // Display the prediction result
+                    alert(`Predicted Severity: ${data.severity}`)
+                    document.getElementById('prediction_result').innerText = `Predicted Severity: ${data.severity}`;
+                    
+                } catch (error) {
+                    console.error("Error predicting:", error);
+                    alert("Prediction failed");
+                }
+            });
+        });
+        
+        
+            </script>
+    <div class="chatbot"> <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+      <script src="https://mediafiles.botpress.cloud/555fcf38-e3fe-4d89-bb69-78c3222cee83/webchat/config.js" defer></script>
+      </div>
+      
+    </body>
+</html>

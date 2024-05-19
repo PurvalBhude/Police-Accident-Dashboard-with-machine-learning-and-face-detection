@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Team-VPY/Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
+    <link rel="icon" type="image/x-icon" href="static/assets/VPY mainlogo.png">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    body {
+        background: #3b3291;
+        color: white;
+        min-height: 100vh; /* Ensure gradient covers entire viewport height */
+        display: flex;
+        /* justify-content: center;
+        align-items: center; */
+
+        
+  /* The image used */
+  background-image: url("static/assets/bgimg.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+    }
+    button {
+        background-color: #7a2cc8;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #802ee4;
+    }
+    .logo {
+        position: absolute;
+        margin-left: 0%;
+        height: 60px;
+        width: auto;
+        margin-top: 8px;
+        padding-left: 0%;
+    }
+    #toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        padding: 0 5%;
+        position: absolute;
+        width: 100%;
+        z-index: 100;
+    }
+    header h1 {
+        margin-top: 25px;
+        margin-left: 80px;
+        font-size: 40px;
+        color: white;
+    }
+    
+    .password {
+  position: relative;
+}
+    header nav {
+        display: flex;
+        gap: 30px;
+    }
+    #password-input {
+  padding-right: 20px; /* make room for the icon */
+}
+    header nav a {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 99px;
+        transition: 0.3s;
+        color: white;
+    }
+    header nav a.active {
+        background: #5247B9;
+    }
+    header nav a:hover {
+        background: #5247B9;
+    }
+    header nav:hover > a:not(:hover) {
+        background: none;
+    }
+    .container {
+        align-self: center;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        margin-left: 40%;
+    }
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    select, input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    [type="button"] {
+        background-color: #7a2cc8;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    [type="button"]:hover {
+        background-color: #802ee4;
+    }
+    option {
+        background-color: #7a2cc8;
+        color: white;
+    }
+    option:checked {
+        background-color: #802ee4;
+        color: #fff;
+    }
+</style>
+<body>
+<header>
+    <img src="static/assets/VPY mainlogo.png" class="logo">
+    <h1>Team VPY</h1>
+    <nav>
+        <a href="./" class="active">Home</a>
+        <a href="./login">Log-in</a>
+    </nav>
+</header>
+<br>
+<div class="container">  
+    <h1>Create Face ID</h1>
+    {% if capturing %}
+        <h2>Capturing faces for {{ capture_name }}</h2>
+        <img src="{{ url_for('video_feed_face') }}" width="640" height="480">
+        <button id="done">Done</button>
+    {% else %}
+        <form action="/capture" method="post">
+            <label for="name">Enter Your Email:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="submit">Capture Face</button>
+        </form>
+        <br>
+        <h2>Instructions for Set up for face ID:</h2>
+        <ul>
+          <li>
+            Fill in your E-Mail id and then Press on the Capture Face button, which will open up your camera for capturing your face.
+          </li>
+          <li>
+            Keep your face steady while the camera captures your face. On the top left corner in the camera there will be a frame count.
+          </li>
+          <li>
+            You will have to keep your face steady in front of the camera until the frame count reaches 100. Then press the done button.
+          </li>
+          <li>
+            After you have submitted all your information you are good to sign in and continue.
+          </li>
+        </ul>
+    {% endif %}
+</div>
+<br>
+<script>
+    document.getElementById("done").addEventListener("click", async function() {
+        window.location.href="./msg"
+    });
+</script>
+</body>
+</html>

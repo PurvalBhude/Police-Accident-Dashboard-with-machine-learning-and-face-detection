@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team-VPY</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/VPY mainlogo.png">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo{
+    position: absolute;
+    margin-left: 0%;
+    height: 60px;
+    width: auto;
+    margin-top: 8px;
+    padding-left: 0%;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+.button {
+    background-color: #044caa;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.button:hover{
+    background-color: #0078d4;
+}
+.prediction, .analysis, .report {
+    display: inline-block;
+    margin: 0 50px; /* This will create a gap of 20px between the two elements */
+}
+
+
+img {
+    width: 250px;
+    display: block; /* This will allow the <br> to push the button below the image */
+    margin: 0 auto 10px; /* This centers the image */
+}
+
+.reportimg{
+    height: 200px;
+    width: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 5%;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+header h1 {
+    margin-left: 80px;
+    font-size: 40px;
+    color: white;
+}
+header nav {
+    display: flex;
+    gap: 30px;
+}
+header nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 99px;
+    transition: 0.3s;
+    color: white;
+}
+header nav a.active {
+    background: #5247B9;
+}
+header nav a:hover {
+    background: #5247B9;
+}
+header nav:hover > a:not(:hover) {
+    background: none;
+}
+
+.home {
+    display: flex;
+    height: 100dvh;
+    background: linear-gradient(to top, #D2E2FB 30%, #86A8DB);
+    position: relative;
+    overflow: hidden;
+}
+
+.home img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.home .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 80px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.about {
+    padding: 50px;
+    background: #3B3291;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+.about h1 {
+    font-size: 40px;
+}
+.title{
+    text-align: center;
+}
+
+.chatbot{
+    position: relative;
+    z-index: 105;
+}
+
+footer {
+            background: #234eb2;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+        }
+</style>
+<body>
+    
+
+    <header>
+        <img src="static/assets/VPY mainlogo.png" class="logo">
+        <h1>Team VPY</h1>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="./about">About</a>
+            <a id="logout" href="./">Log-out</a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <img src="static/assets/mount2.png" class="mount2">
+        <img src="static/assets/mount1.png" class="mount1">
+        <img src="static/assets/bush2.png" class="bush2">
+
+        <h1 class="title">Accidental Analysis</h1>
+
+        <img src="static/assets/bush1.png" class="bush1">
+        <img src="static/assets/leaf2.png" class="leaf2">
+        <img src="static/assets/leaf1.png" class="leaf1">
+    </section>
+
+    <section class="about">
+        <h1>Description</h1>
+        <p>Powerful tool designed to assess the likelihood of accidents occurring in a specific area based on user-provided inputs. The accidental analysis model focuses on understanding the root causes of accidents. By analyzing accident data, safety professionals can identify patterns, contributing factors, and risk areas. This knowledge helps authorities take preventive measures and improve safety. In the context of traffic accidents, analytic graphs consider the connectivity of accident events on the road network. Graph metrics like degree centrality and PageRank centrality help rank and profile accident-prone areas over time and space, aiding urban traffic accident analysts in enhancing safety.
+           <br><br> We also have made a <b>AI Chat Bot</b>, tailored to provide insights on accidents in Karnataka, offers users a comprehensive understanding of road safety within the region. By utilizing data on accident locations, severity, and contributing factors, the chatbot enables users to inquire about recent incidents, historical trends, and receive safety recommendations. Through conversational interactions and integrated visualizations, the chatbot enhances user engagement and promotes informed decision-making, ultimately contributing to the reduction of accidents and fatalities on Karnataka's roads. 
+        </p>
+        <div class="container">
+        <div class="prediction">
+            <img src="static/assets/prediction.png" alt="Prediction">
+            <a href="./prediction" class="button">Prediction</a>
+        </div>
+        <div class="analysis">
+            <img src="static/assets/analysis.png" alt="Analysis">
+            <a href="./analysis" class="button">Analysis</a>
+        </div>
+        <div class="report">
+            <img class="reportimg" src="static/assets/report(main).png" alt="Analysis">
+            <a href="./report" class="button">Report</a>
+        </div>
+    </div>
+        <br>
+    </section>
+
+    <script>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDwD37Q92VBM29BRL9ZmbO6Nw-X7DqPCi4",
+    authDomain: "k-c-p-hackathon-0amrip.firebaseapp.com",
+    projectId: "k-c-p-hackathon-0amrip",
+    storageBucket: "k-c-p-hackathon-0amrip.appspot.com",
+    messagingSenderId: "926202595834",
+    appId: "1:926202595834:web:e3d00dcc60c1c381dc7c43"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  console.log("Firebase app initialized:", app);
+        
+        document.getElementById("logout").addEventListener("click", async function() {
+            signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log('Sign-out successful.');
+    //   alert('Sign-out successful.');
+      document.getElementById('logout').style.display = 'none';
+    }).catch((error) => {
+      // An error happened.
+      console.error('Sign-out error:', error);
+    });
+    window.location.href = "./";
+        })
+</script>
+<div class="chatbot"> <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script src="https://mediafiles.botpress.cloud/555fcf38-e3fe-4d89-bb69-78c3222cee83/webchat/config.js" defer></script>
+</div>
+<footer>
+    <p>&copy; 2024 Team-VPY . All Rights Reserved.</p>
+</footer>
+<script>const title = document.querySelector('.title')
+    const leaf1 = document.querySelector('.leaf1')
+    const leaf2 = document.querySelector('.leaf2')
+    const bush2 = document.querySelector('.bush2')
+    const mount1 = document.querySelector('.mount1')
+    const mount2 = document.querySelector('.mount2')
+    
+    document.addEventListener('scroll', function() {
+        let value = window.scrollY
+        // console.log(value)
+        title.style.marginTop = value * 1.1 + 'px'
+    
+        leaf1.style.marginLeft = -value + 'px'
+        leaf2.style.marginLeft = value + 'px'
+    
+        bush2.style.marginBottom = -value + 'px'
+    
+        mount1.style.marginBottom = -value * 1.1 + 'px'
+        mount2.style.marginBottom = -value * 1.2 + 'px'
+    })</script>
+</body>
+</html>

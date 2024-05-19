@@ -1,0 +1,6 @@
+Flask==3.0.2
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.4.2
+requests==2.31.0
+opencv-python==4.9.0.80

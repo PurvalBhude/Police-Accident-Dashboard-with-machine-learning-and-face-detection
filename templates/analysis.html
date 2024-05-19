@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM-VPY/Analysis</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/VPY mainlogo.png">
+    
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.imgweather{
+    display: flex;
+
+}
+
+.districtnew{
+    height: 600px;
+    width: auto;
+}
+
+.weather {
+    margin-top: 10px;
+    height: 400px;
+    width: auto;
+}
+
+.logo{
+    position: absolute;
+    margin-left: 0%;
+    height: 60px;
+    width: auto;
+    margin-top: 8px;
+    padding-left: 0%;
+}
+
+.purval{
+    height: 400px;
+    width: auto;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    margin-left: 10px;
+}
+.button {
+    background-color: #044caa;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.button:hover{
+    background-color: #0078d4;
+}
+.prediction, .analysis {
+    display: inline-block;
+    margin: 0 100px; /* This will create a gap of 20px between the two elements */
+}
+img {
+    width: 250px;
+    display: block; /* This will allow the <br> to push the button below the image */
+    margin: 0 auto 10px; /* This centers the image */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 5%;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+header h1 {
+    margin-left: 80px;
+    font-size: 40px;
+    color: white;
+}
+header nav {
+    display: flex;
+    gap: 30px;
+}
+header nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 99px;
+    transition: 0.3s;
+    color: white;
+}
+header nav a.active {
+    background: #5247B9;
+}
+header nav a:hover {
+    background: #5247B9;
+}
+header nav:hover > a:not(:hover) {
+    background: none;
+}
+
+.home {
+    display: flex;
+    height: 100dvh;
+    background: linear-gradient(to top, #D2E2FB 30%, #86A8DB);
+    position: relative;
+    overflow: hidden;
+}
+
+.home img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.home .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 80px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.about {
+    padding: 50px;
+    background: #3B3291;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+.about h1 {
+    font-size: 40px;
+}
+.title{
+    text-align: center;
+}
+
+.chatbot{
+    position: relative;
+    z-index: 105;
+}
+.asset-section{
+    margin-left: 10px;
+
+}
+.my-button {
+            display: inline;
+            padding: 10px 20px ;
+            background-color: #0074D9;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        /* Hover effect */
+        .my-button:hover {
+            background-color: #005689;
+        }
+
+        footer {
+            background: #234eb2;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+        }
+</style>
+<body>
+
+    <header>
+        <img src="static/assets/VPY mainlogo.png" class="logo">
+        <h1>Team VPY</h1>
+
+        <nav>
+            <a href="./home" class="active">Home</a>
+            <a href="./about">About</a>
+           
+        </nav>
+    </header>
+
+    <section class="home">
+        <img src="static/assets/mount2.png" class="mount2">
+        <img src="static/assets/mount1.png" class="mount1">
+        <img src="static/assets/bush2.png" class="bush2">
+
+        <h1 class="title">Analysis Section</h1>
+
+        <img src="static/assets/bush1.png" class="bush1">
+        <img src="static/assets/leaf2.png" class="leaf2">
+        <img src="static/assets/leaf1.png" class="leaf1">
+    </section>
+
+    <section class="about">
+        <h1>Description</h1>
+        <p>This section will give you an overview of accidental analysis with the use of graphs and some maps. </p>
+        <br>
+        <a href="./heatmap" class="my-button">View Heat Map</a>
+        <a href="./severitymap" class="my-button">View severity map</a>
+        
+
+        <div class="container">
+        </section>
+    <br>
+    <br>
+
+
+
+    <section class="asset-section">
+        <h2>Number of Accidents per year (Recorded from 2016 to 2023)</h2>
+                            <img class="purval" src="static/assets/year vs no. of accidents(new).png" alt="Asset Image">
+
+<p>
+    The graph illustrates the yearly accident data in Karnataka over a specified period. The x-axis represents the years, ranging from 2016 to 2023, while the y-axis denotes the number of accidents. Each data point on the graph corresponds to the total number of reported accidents for that particular year.
+    The graph reveals trends in accident occurrences, which is a rising trend, indicating an increase in road traffic or other contributing factors. Additionally, the noticeable dips indicate the pandemic event.
+   <br><br> Overall, the graph provides a visual representation of how accident rates have evolved over time in Karnataka, offering insights into patterns and potential areas for further investigation or intervention.
+</p>
+
+</section>
+<br><br>
+
+
+
+<section class="asset-section">
+    <h2>Number of Accidents per District at different severity</h2>
+                        <img class="districtnew" src="static/assets/Accident by Severity and District(new).png" alt="Asset Image">
+
+                        <br>
+<p>
+    The graph depicts the number of accidents occurring in various districts of Karnataka, categorized by severity levels. The x-axis lists the districts, such as Bengaluru Urban, Mysuru, Mangaluru, Hubballi-Dharwad, and others. The y-axis shows the total number of accidents.
+    <br>The graph allows for a comparative analysis of how accident rates vary across districts and highlights which areas experience more severe accidents. For instance, Bengaluru Urban might show a high total number of accidents with a significant proportion being minor, whereas a district like Hubballi-Dharwad might have fewer accidents overall but a higher proportion of severe or fatal ones.
+    <br><br>
+    By illustrating the distribution of accidents by severity, the graph provides a comprehensive overview of traffic safety across Karnataka's districts. This can help identify regions that require targeted interventions, improved traffic management, or enhanced road safety measures to reduce accident severity and frequency.
+
+
+</p>
+<br> <br>
+
+</section>
+
+
+
+
+
+        <section class="asset-section">
+                        <h2>Severity comaprison between urban and rural areas</h2>
+            <p>
+                From the graph we can see the change in number of accidents in rural areas and village settlements over the years.
+                
+                As we can see the number of accidents in cities/towns in similar over the years.
+                
+                The change occuring is in the number of accidents happening in rural areas. From the graph, it is visible that the count of accidents is increasing as modernization of rural areas is taking place.
+<p>                            <img class="purval" src="static/assets/Accident in Rural Areas, Cities, Towns, and Village Settlements (2016-2023).png" alt="Asset Image">
+    <p>
+        <h3>Solution:</h3>
+Cities/ Towns:<br>
+1. Optimize traffic signal timing and coordination to minimize congestion and improve the efficiency of intersections.
+<br>
+2. Implement traffic calming measures such as raised crosswalks, curb extensions, and pedestrian plazas to slow vehicle speeds and improve safety for pedestrians.
+<br><br>
+Rural Areas:<br>
+1. Maintain rural roads in good condition by repairing potholes, clearing debris, and improving drainage to reduce the risk of accidents caused by poor road conditions.
+<br>
+2. Develop comprehensive emergency response plans to ensure prompt and effective responses to accidents in rural areas, where emergency services may be limited or delayed.
+<br><br>
+Village settlements:<br>
+1. Restrict vehicle access to village settlements through physical barriers, gated entrances, or permit systems to reduce traffic volume and improve safety for pedestrians and cyclists.
+<br>
+2. Construct sidewalks, pedestrian crossings, and bicycle lanes to separate vulnerable road users from vehicular traffic.
+<br>
+3. Train community members as volunteer traffic monitors to report traffic violations and unsafe driving behaviors.
+    </p>
+
+        </section>
+        <br>
+        <section class="asset-section">
+            <h2>Number of accidents vs Cities</h2>
+            <p>In the graph we see that the the intensity of accidents depends on the population of the city. Since, Bengaluru is the most populated city hence most number of accidents has occured there, followed by Tumakuru and others.
+            </p>
+
+            <img class="purval" src ="static/assets/cities vs no. of accidents.png" alt="Asset Image">
+            <p><h3>Solution:</h3>1. Expanding and improving public transportation networks with reliable and efficient bus, metro, tram, and light rail systems to provide viable alternatives to private car usage and reduce traffic congestion.
+<br>
+                2. Increase police presence and enforcement activities in high-traffic areas, intersections, and accident hotspots to deter speeding, reckless driving, and other unsafe behaviors.
+                <br>
+                3. Upgrade road infrastructure with dedicated lanes for buses, bicycles, and pedestrians, as well as improved signage, road markings, and lighting to enhance visibility and guide traffic safely.
+                <br>
+                4. Collaborate with schools, community organizations, and businesses to implement road safety education programs for children, teenagers, and adults to instill good road safety habits from a young age.
+                <br>
+                5. Develop emergency response plans and protocols in collaboration with local emergency services, hospitals, and first responders to ensure timely and effective responses to traffic accidents and emergencies.
+                <br>
+                6. Train emergency responders and healthcare professionals in accident management techniques, trauma care, and patient transport to improve outcomes for accident victims.</p>
+                    </section>
+                    <br> <br>
+        <section class="asset-section"><h2>Number of accidents VS weather</h2>
+            <p>From the above graph we can see that the most number of accidents that have happened are on clear and fine weather.
+            </p>
+<div class="imgweather"> <img class="weather" src="static/assets/weather.png" alt="Asset Image">
+            <img class="weather" src="static/assets/Accident by Severity and Weather conditions(new).png" alt="Asset Image">
+           </div>
+            <p><h3>
+                Solution:
+            </h3>
+                1. Early Warning Systems: Implement early warning systems to alert drivers about upcoming adverse weather conditions such as heavy rain, fog, snow, or ice. Utilize electronic message boards, social media, and mobile apps to disseminate real-time weather updates to drivers.
+<br>
+                2. Road Condition Monitoring: Monitor road conditions in real-time using weather sensors and surveillance cameras. Deploy patrol officers to assess road conditions and identify areas prone to weather-related hazards such as flooding, black ice, or debris.
+                <br>
+                3. Traffic Management: Implement traffic management strategies to mitigate the impact of adverse weather on traffic flow. This may include temporarily closing affected roadways, rerouting traffic, or implementing temporary speed restrictions.
+                <br>
+                4. Continuous Improvement: Continuously evaluate and refine weather-related accident management procedures based on lessons learned from previous incidents. Foster a culture of continuous improvement and innovation within the police department to enhance road safety in adverse weather conditions.            </p>
+            <br><br>
+                    </section>
+        <section class="asset-section"><h2>Accident VS location</h2>
+            <p>From the graph we can see that major accidents have happened on Narrower roads, cross roads, curves, junctions and high traffic areas.
+<br>
+                The major reasons could be:<br>
+                1. Improper Overtaking: On narrower roads or in high-traffic areas, impatient drivers may attempt to overtake slower vehicles in unsafe locations, such as curves or junctions, resulting in head-on collisions or side-swipe accidents.
+                <br>
+                2. Lack of Traffic Control Devices: Absence or malfunctioning of traffic signals, stop signs, or warning signs at crossroads, junctions, or high-traffic areas can lead to confusion among drivers and increase the likelihood of accidents.
+                <br>
+                3. Aggressive Driving: Aggressive behaviors such as tailgating, speeding, and reckless maneuvers are more dangerous on narrower roads, at crossroads, and in high-traffic areas, where there is less margin for error and less time to react.
+                </p>
+
+            <img class="purval" src="static/assets/Accident Locations.png" alt="Asset Image">
+            <p>
+                <h3>
+                    Solution:
+                </h3>
+                1. Install traffic signals, stop signs, or roundabouts to regulate traffic flow and reduce the risk of collisions at crossroads.
+Improve signage and road markings to clearly indicate right of way and directions at crossroads.
+<br>
+2. Install warning signs, rumble strips, or chevrons to alert drivers of upcoming curves and reduce the risk of overshooting or losing control.
+Implement speed limits and enforcement measures specific to curves to ensure that drivers adjust their speed appropriately.
+<br>
+3. Implement traffic calming measures such as speed bumps or raised intersections to slow traffic approaching junctions.
+Increase enforcement of traffic laws, particularly regarding right of way and safe merging, at junctions to prevent collisions.
+<br>
+4. Increase police presence and enforcement activities in high-traffic areas to deter aggressive driving, speeding, and other risky behaviors.
+            </p>
+                    </section>
+                    <br><br>
+        <section class="asset-section"><h2>Number of Accident VS Road character </h2>
+            <p>From the graph we can see that major accidents have happened on Straight and Flat road followed by accidents happening on Curved road.
+<br>
+                The major reasons could be:
+                <br>
+                Straight and Flat road :<br>
+                For Straight and Flat road speed violation is the main reason for accidents happening. Also, check for the road conditions on hotspots of high accident areas.
+                <br>
+                Curved Road : <br>
+                For curved roads the reason for accidents is vehicle slipping. In low visibility areas the accidents also happen due to collisions from an upcoming unseen vehicle.
+                </p>
+
+            <img class="purval" src="static/assets/Road Character.png" alt="Asset Image">
+            <p>
+                <h3>Solution:</h3>
+                1. Enhanced Enforcement: Increase enforcement efforts on roads with hazardous characteristics, focusing on speeding, reckless driving, and other risky behaviors. Deploy patrol officers and utilize speed detection devices to deter speeding and ensure compliance with traffic laws.
+<br>
+2. Improved Signage and Markings: Install clear and visible signage, road markings, and reflective materials to alert drivers to potential hazards and guide them safely through challenging road sections. Ensure that signs are placed strategically and comply with relevant regulations.
+<br>
+3. Road Safety Audits: Conduct regular road safety audits to identify hazardous road characteristics such as sharp curves, blind spots, inadequate signage, poor visibility, and uneven surfaces. Collaborate with transportation authorities to address identified issues promptly.
+            </p>
+                    </section>
+                    <br> <br>
+        <section class="asset-section"><h2>Number of accident VS Road Type</h2>
+            <p>From this bar graph we can see that the most number of acccident happened are on NH (National Highway) followed by State Highway. <br>
+                The major reasons for high number of accidents are:<br>
+                1. Speeding: Excessive speeding is a common cause of accidents on highways. High speeds reduce the driver's reaction time and increase the severity of collisions.
+                <br>2. Lack of Enforcement: Inadequate enforcement of traffic laws, including speeding, seat belt use, and drunk driving, can embolden drivers to engage in risky behaviors.
+                <br>3. Wildlife Crossings: Highways passing through rural areas may encounter wildlife crossing the road, leading to collisions with animals.
+                </p>
+
+            <img class="purval" src="static/assets/Road Type.png" alt="Asset Image">
+<h3>
+                    Solution:
+                </h3>
+            <p >
+                
+                1. Increased Patrols: Increase the presence of police patrols on highways to deter speeding, aggressive driving, and other risky behaviors. Visible enforcement can encourage compliance with traffic laws.
+<br>
+                2. Strict Enforcement: Implement strict enforcement of speed limits, seat belt laws, and laws against distracted and impaired driving. This includes conducting regular sobriety checkpoints and issuing citations for violations.
+    <br>            
+                3. Training and Development: Provide specialized training to police officers on highway safety enforcement techniques, accident investigation, and traffic management.
+        <br>        
+                4. Traffic Management: Implement measures to improve traffic flow and reduce congestion on highways, such as optimizing signal timings, providing real-time traffic updates, and managing lane closures during construction activities.
+            <br>    
+                5. Road Infrastructure Improvements: Wherever there are hotspots of accident advocate for infrastructure improvements, including better signage, road markings, lighting, guardrails, and barriers, to enhance safety on highways.         </p>
+
+
+                    </section>
+        
+    </div>
+        <br>
+    </section>
+    <script>const title = document.querySelector('.title')
+        const leaf1 = document.querySelector('.leaf1')
+        const leaf2 = document.querySelector('.leaf2')
+        const bush2 = document.querySelector('.bush2')
+        const mount1 = document.querySelector('.mount1')
+        const mount2 = document.querySelector('.mount2')
+        
+        document.addEventListener('scroll', function() {
+            let value = window.scrollY
+            // console.log(value)
+            title.style.marginTop = value * 1.1 + 'px'
+        
+            leaf1.style.marginLeft = -value + 'px'
+            leaf2.style.marginLeft = value + 'px'
+        
+            bush2.style.marginBottom = -value + 'px'
+        
+            mount1.style.marginBottom = -value * 1.1 + 'px'
+            mount2.style.marginBottom = -value * 1.2 + 'px'
+        })</script>
+<div class="chatbot"> <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script src="https://mediafiles.botpress.cloud/555fcf38-e3fe-4d89-bb69-78c3222cee83/webchat/config.js" defer></script>
+</div>
+<footer>
+    <p>&copy; 2024 Team-VPY . All Rights Reserved.</p>
+</footer>
+   
+</body>
+</html>

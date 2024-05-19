@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team-VPY/Report</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/VPY mainlogo.png">
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+  </head>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000080;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Abel';
+    }
+    table {
+      font-family: 'Abel';font-size: 22px;
+      width: 80%;
+      border-collapse: seperate;
+      margin-top: 20px;
+      margin-left: 10%;
+      margin-right: 10px;
+      box-shadow: 0 0 10px #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    /* border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      margin: 20px;
+      box-shadow: 0 0 10px #000;
+      border-radius: 10px;
+      overflow: hidden; */
+
+    th,
+    td {
+      /* border: 1px solid #000080; */
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #000080;
+      color: #ffffff;
+    }
+    tr:nth-child(even) {
+      background-color: #add8e6;
+    }
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+  <body>
+    <div>
+      <h1>Report Database</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Datetime</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Name</th>
+            <th>People involved</th>
+            <th>Vehicle-Number</th>
+          </tr>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+    <footer>
+      <p>&copy; 2024 Team-VPY . All Rights Reserved.</p>
+  </footer>
+  </body>
+  <script type="module">
+    // Function to convert Firestore timestamp to JavaScript Date
+    function tojsdate(dob) {
+      try {
+        return new Date(dob.seconds * 1000 + dob.nanoseconds / 1000000);
+      } catch (error) {
+        console.error("Error converting Firestore timestamp:", error);
+        return null;
+      }
+    }
+
+    //---------------------------fillinf
+
+    var tbody = document.getElementById("body");
+
+    function AddRowToTable(date, des, loc, name, peo, veh) {
+      let trow = document.createElement("tr");
+      let td1 = document.createElement("td");
+      let td2 = document.createElement("td");
+      let td3 = document.createElement("td");
+      let td4 = document.createElement("td");
+      let td5 = document.createElement("td");
+      let td6 = document.createElement("td");
+
+      // Check if date is valid before formatting
+      td1.innerHTML = date ? date.toLocaleString() : "Invalid date";
+      td2.innerHTML = des;
+      td3.innerHTML = loc;
+      td4.innerHTML = name;
+      td5.innerHTML = peo;
+      td6.innerHTML = veh;
+
+      trow.appendChild(td1);
+      trow.appendChild(td2);
+      trow.appendChild(td3);
+      trow.appendChild(td4);
+      trow.appendChild(td5);
+      trow.appendChild(td6);
+
+      tbody.appendChild(trow);
+    }
+
+    function AddItemsToTable(TheStudents) {
+      tbody.innerHTML = "";
+      TheStudents.forEach((element) => {
+        // Add debug statement to log each element
+        console.log("Processing element:", element);
+        const date = tojsdate(element.datetime);
+        console.log("Converted date:", date);
+
+        AddRowToTable(
+          date, // Convert the Firestore timestamp to JS Date
+          element.description,
+          element.location,
+          element.name,
+          element.peopleinvolved,
+          element.vehicle_number
+        );
+      });
+    }
+
+    //---------------------firestore
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDwD37Q92VBM29BRL9ZmbO6Nw-X7DqPCi4",
+      authDomain: "k-c-p-hackathon-0amrip.firebaseapp.com",
+      projectId: "k-c-p-hackathon-0amrip",
+      storageBucket: "k-c-p-hackathon-0amrip.appspot.com",
+      messagingSenderId: "926202595834",
+      appId: "1:926202595834:web:e3d00dcc60c1c381dc7c43",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import {
+      getFirestore,
+      getDocs,
+      collection,
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const db = getFirestore(app);
+
+    //---------------------------get data
+    async function GetAllDataOnce() {
+      const querySnapshot = await getDocs(collection(db, "data"));
+      var students = [];
+
+      querySnapshot.forEach((doc) => {
+        students.push(doc.data());
+      });
+
+      console.log("Fetched students:", students);
+      AddItemsToTable(students);
+    }
+
+    window.onload = GetAllDataOnce;
+  </script>
+</html>

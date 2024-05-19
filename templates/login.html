@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Team-VPY/login-in</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="static/assets/VPY mainlogo.png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Reset some default styling */
+    /* body, h1, h2, form, label, input, select {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+    } */
+
+    body {
+      background: #3b3291;
+      color: white;
+      min-height: 100vh; /* Ensure gradient covers entire viewport height */
+      display: flex;
+      /* justify-content: center;
+        align-items: center; */
+
+      /* The image used */
+      background-image: url("static/assets/bgimg.jpg");
+
+      /* Full height */
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .logo {
+      position: absolute;
+      margin-left: 0%;
+      height: 60px;
+      width: auto;
+      margin-top: 8px;
+      padding-left: 0%;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+      padding: 0 5%;
+      position: absolute;
+      width: 100%;
+      z-index: 100;
+    }
+    header h1 {
+      margin-top: 25px;
+      margin-left: 80px;
+      font-size: 40px;
+      color: white;
+    }
+    header nav {
+      display: flex;
+      gap: 30px;
+    }
+    header nav a {
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 99px;
+      transition: 0.3s;
+      color: white;
+    }
+    header nav a.active {
+      background: #5247b9;
+    }
+    header nav a:hover {
+      background: #5247b9;
+    }
+    header nav:hover > a:not(:hover) {
+      background: none;
+    }
+
+    .container2 {
+      align-self: center;
+      width: 50%;
+
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px); /* Glass-like effect */
+      margin-left: 0;
+      margin-right: 10%;
+    }
+    .container1 {
+      align-self: center;
+      width: 500px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px); /* Glass-like effect */
+      margin-left: 0;
+      margin-right: 10%;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    select,
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    [type="button"] {
+      background-color: #7a2cc8;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    [type="button"]:hover {
+      background-color: #802ee4;
+    }
+    option {
+      background-color: #7a2cc8; /* Default background color for options */
+      color: white; /* Default text color for options */
+    }
+
+    /* Style for selected option */
+    option:checked {
+      background-color: #802ee4; /* Selected option background color */
+      color: #fff; /* Selected option text color */
+    }
+
+    .password {
+      position: relative;
+    }
+
+    #password-input {
+      padding-right: 20px; /* make room for the icon */
+    }
+
+    #toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 35%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    main {
+      display: flex;
+      margin-left: 10%;
+    }
+    #error {
+      color: red;
+    }
+  </style>
+  <body>
+    <header>
+      <img src="static/assets/VPY mainlogo.png" class="logo" />
+      <h1>Team VPY</h1>
+
+      <nav>
+        <a href="./" class="active">Home</a>
+        <a href="./signup">Sign-in</a>
+      </nav>
+    </header>
+
+    <br />
+
+    <main>
+      <div class="container1">
+        <h1>Log-in</h1>
+        <form
+          name="login_form"
+          id="login_form"
+          method="post"
+          action="#"
+          enctype="multipart/form-data"
+        >
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="login_email">Email</label>
+              <input
+                type="text"
+                name="login_email"
+                id="login_email"
+                class="form-control"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="login_password">Password</label>
+              <div class="password">
+                <input
+                  type="password"
+                  name="login_password"
+                  id="login_password"
+                  class="form-control"
+                  placeholder="Enter Password"
+                />
+                <i id="toggle-password" class="fas fa-eye"></i>
+              </div>
+
+              <script>
+                var togglePassword = document.querySelector("#toggle-password");
+                var passwordInput = document.querySelector("#login_password");
+
+                togglePassword.addEventListener("click", function (e) {
+                  // toggle the type attribute
+                  var type =
+                    passwordInput.getAttribute("type") === "password"
+                      ? "text"
+                      : "password";
+                  passwordInput.setAttribute("type", type);
+                  // toggle the eye icon
+                  this.classList.toggle("fa-eye-slash");
+                });
+              </script>
+            </div>
+            <p id="error"></p>
+            <button
+              type="button"
+              id="login"
+              name="login"
+              class="btn btn-success"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              id="forgot_password"
+              name="forgot_password"
+              class="btn btn-link"
+            >
+              Forgot Password?
+            </button>
+          </div>
+          <br />
+          <p>Don't have a account <a href="./signup">Sign up</a></p>
+        </form>
+      </div>
+      <div class="container2">
+        <h1>Face ID Verification</h1>
+
+        {% if capturing %}
+        <h2>Capturing faces</h2>
+        <img src="{{ url_for('video_feed') }}" width="640" height="480" />
+        {% else %}
+        <form action="/login" method="post">
+          <label for="name">Enter Your email:</label>
+          <input type="text" id="name" name="name" required />
+          <button id="face" type="submit">Capture Face</button>
+        </form>
+        <br />
+        <h2>Instructions for Log in:</h2>
+        <ul>
+          <li>Firstly you will have to verify your face.</li>
+          <li>
+            Then you can fill up your credentials and log into the website
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+    </main>
+    <br />
+  </body>
+  <script type="module">
+    let log = 0;
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      sendEmailVerification,
+      sendPasswordResetEmail,
+      signOut,
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDwD37Q92VBM29BRL9ZmbO6Nw-X7DqPCi4",
+      authDomain: "k-c-p-hackathon-0amrip.firebaseapp.com",
+      projectId: "k-c-p-hackathon-0amrip",
+      storageBucket: "k-c-p-hackathon-0amrip.appspot.com",
+      messagingSenderId: "926202595834",
+      appId: "1:926202595834:web:e3d00dcc60c1c381dc7c43",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    console.log("Firebase app initialized:", app);
+
+    // document
+    //     .getElementById("face")
+    //     .addEventListener("click", async function () {
+    //       log = 1;
+    //     });
+      // Login code
+      document.getElementById("login").addEventListener("click",async function () {
+          const email = document.getElementById("login_email").value;
+          const password = document.getElementById("login_password").value;
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              if (user.emailVerified) {
+                console.log("User logged in:", user);
+                // alert(`${user.email} logged in successfully!`);
+                window.location.href = "./home";
+                document.getElementById("logout").style.display = "block";
+              } else {
+                alert("Please verify your email before logging in.");
+              }
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error("Login error:", errorCode, errorMessage);
+              // alert(`Error: ${errorMessage}`);
+              let error_msg = document.getElementById("error");
+              error_msg.innerHTML = `credentials already used`;
+            });
+      });
+
+      // Forgot Password code
+      document
+        .getElementById("forgot_password")
+        .addEventListener("click",async function () {
+          const email = document.getElementById("login_email").value;
+          if (!email) {
+            alert("Please enter your email address to reset your password.");
+            return;
+          }
+          sendPasswordResetEmail(auth, email)
+            .then(() => {
+              alert("Password reset email sent! Check your inbox.");
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error(
+                "Error sending password reset email:",
+                errorCode,
+                errorMessage
+              );
+              // alert(`Error: ${errorMessage}`);
+            });
+        });
+  </script>
+</html>
