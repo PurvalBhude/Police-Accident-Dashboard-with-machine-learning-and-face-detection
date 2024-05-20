@@ -277,15 +277,15 @@
             </div>
             <p id="error"></p>
             <span id="log">
-            <button
-              type="button"
-              id="login"
-              name="login"
-              class="btn btn-success"
-            >
-              Login
-            </button>
-          </span>
+              <button
+                type="button"
+                id="login"
+                name="login"
+                class="btn btn-success"
+              >
+                Login
+              </button>
+            </span>
             <button
               type="button"
               id="forgot_password"
@@ -304,18 +304,18 @@
         <h1>Face ID Verification</h1>
         <h2>Capturing faces for {{ name }}</h2>
         <img src="{{ url_for('video_feed') }}" width="640" height="480" />
-        <button id="final" type="submit">log in </button>
+        <button id="final" type="submit">log in</button>
         {% else %}
-        <br/>
+        <br />
         <h2>Instructions for Log in:</h2>
         <ul>
-          <li>Firstly you can fill up your credentials and log into the website.</li>
           <li>
-            Then you will have to verify your face ID.
+            Firstly you can fill up your credentials and log into the website.
           </li>
+          <li>Then you will have to verify your face ID.</li>
           <li>After Face ID Verification Click on log in</li>
         </ul>
-        
+
         {% endif %}
       </div>
     </main>
@@ -355,22 +355,23 @@
     //     .addEventListener("click", async function () {
     //       log = 1;
     //     });
-      // Login code
-      document.getElementById("login").addEventListener("click",async function () {
-          const email = document.getElementById("login_email").value;
-          const password = document.getElementById("login_password").value;
-          signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              // Signed in
-              const user = userCredential.user;
-              if (user.emailVerified) {
-                console.log("User logged in:", user);
-                // alert(`${user.email} logged in successfully!`);
+    // Login code
+    document
+      .getElementById("login")
+      .addEventListener("click", async function () {
+        const email = document.getElementById("login_email").value;
+        const password = document.getElementById("login_password").value;
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            if (user.emailVerified) {
+              console.log("User logged in:", user);
+              // alert(`${user.email} logged in successfully!`);
 
+              // window.location.href = "./home";
 
-                // window.location.href = "./home";
-
-                document.getElementById("log").innerHTML = `<button
+              document.getElementById("log").innerHTML = `<button
               type="submit"
               id="login"
               name="login"
@@ -378,48 +379,57 @@
             >
               Start Face ID
             </button>`;
-                document.getElementById("logout").style.display = "block";
-              } else {
-                alert("Please verify your email before logging in.");
-              }
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.error("Login error:", errorCode, errorMessage);
-              // alert(`Error: ${errorMessage}`);
+              document.getElementById("logout").style.display = "block";
+            } else {
+              alert("Please verify your email before logging in.");
+            }
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Login error:", errorCode);
+            console.error(errorMessage);
+            // alert(`Error: ${errorMessage}`);
+            if (errorCode === "auth/invalid-credential") {
               let error_msg = document.getElementById("error");
-              error_msg.innerHTML = `Credentials Invaild`;
-            });
+              error_msg.innerHTML = `Credentials Invalid`;
+            }
+            if (errorCode === "auth/too-many-requests"){
+              let error_msg = document.getElementById("error");
+              error_msg.innerHTML = `Too Many Failed Attempt, Try after sometime`;
+            }
+          });
       });
 
-      // Forgot Password code
-      document
-        .getElementById("forgot_password")
-        .addEventListener("click",async function () {
-          const email = document.getElementById("login_email").value;
-          if (!email) {
-            alert("Please enter your email address to reset your password.");
-            return;
-          }
-          sendPasswordResetEmail(auth, email)
-            .then(() => {
-              alert("Password reset email sent! Check your inbox.");
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.error(
-                "Error sending password reset email:",
-                errorCode,
-                errorMessage
-              );
-              // alert(`Error: ${errorMessage}`);
-            });
-        });
+    // Forgot Password code
+    document
+      .getElementById("forgot_password")
+      .addEventListener("click", async function () {
+        const email = document.getElementById("login_email").value;
+        if (!email) {
+          alert("Please enter your email address to reset your password.");
+          return;
+        }
+        sendPasswordResetEmail(auth, email)
+          .then(() => {
+            alert("Password reset email sent! Check your inbox.");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(
+              "Error sending password reset email:",
+              errorCode,
+              errorMessage
+            );
+            // alert(`Error: ${errorMessage}`);
+          });
+      });
 
-        document.getElementById("final").addEventListener("click", async function(){
-          window.location.href = "./home";
-        });
+    document
+      .getElementById("final")
+      .addEventListener("click", async function () {
+        window.location.href = "./home";
+      });
   </script>
 </html>
