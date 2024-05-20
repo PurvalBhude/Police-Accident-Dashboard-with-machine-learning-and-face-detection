@@ -18,7 +18,7 @@ def maxindex(arr):
     return max_index
 
 # video = cv2.VideoCapture(0)
-facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+facedetect = cv2.CascadeClassifier('resources\haarcascade_frontalface_default.xml')
 
 # Global variables for capturing faces
 capturing_faces = False
@@ -47,7 +47,7 @@ weather = np.array(['Clear', 'Cloudy', 'Dust Storm', 'Fine', 'Flooding of Slipwa
 
 @app.route('/')
 def index():
-    return render_template('landingpage.html')  # Change to index.html
+    return render_template('landingpage.html')
 
 @app.route('/predict', methods=['POST'])
 def predict_accident():
@@ -70,7 +70,6 @@ def predict_accident():
 
     # Prepare the prediction array
     predict_array = np.concatenate(([NumberOfVehicles, Latitude, Longitude], District, Location, Weather)).reshape(1, -1)
-    
 
     # Make prediction
     predictions = model.predict(predict_array)

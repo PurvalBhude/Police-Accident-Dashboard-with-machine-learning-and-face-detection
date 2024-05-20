@@ -380,6 +380,8 @@
               Start Face ID
             </button>`;
               document.getElementById("logout").style.display = "block";
+              let error_msg = document.getElementById("error");
+              error_msg.innerHTML = ``;
             } else {
               alert("Please verify your email before logging in.");
             }
