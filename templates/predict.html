@@ -2,34 +2,104 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Accident Prediction</title>
+    <title>Team-VPY/Prediction</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/VPY mainlogo.png">
   </head>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
 
     /* Reset some default styling */
-    body, h1, h2, form, label, input, select {
+    /* body, h1, h2, form, label, input, select {
         margin: 0;
         padding: 0;
         font-family: "Poppins", sans-serif;
-    }
+    } */
 
     body {
+        
         background: #3b3291;
         color: white;
         min-height: 100vh; /* Ensure gradient covers entire viewport height */
         display: flex;
-        justify-content: center;
-        align-items: center;
+        /* justify-content: center;
+        align-items: center; */
+
+        /* Full height */
+      height: 100%;
+      background-image: url("static/assets/bgimg.jpg");
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
     }
 
+    .logo{
+    position: absolute;
+    margin-left: 0%;
+    height: 60px;
+    width: auto;
+    margin-top: 8px;
+    padding-left: 0%;
+}
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 5%;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+header h1 {
+  margin-top: 25px;
+    margin-left: 80px;
+    font-size: 40px;
+    color: white;
+}
+header nav {
+    display: flex;
+    gap: 30px;
+}
+header nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 99px;
+    transition: 0.3s;
+    color: white;
+}
+header nav a.active {
+    background: #5247B9;
+}
+header nav a:hover {
+    background: #5247B9;
+}
+header nav:hover > a:not(:hover) {
+    background: none;
+}
+
     .container {
+      align-self: center;
         max-width: 600px;
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px); /* Glass-like effect */
+        margin-left: 40%;
+        
     }
 
     h1, h2 {
@@ -80,6 +150,18 @@
     }
 </style>
   <body>
+
+    <header>
+      <img src="static/assets/VPY mainlogo.png" class="logo">
+      <h1>Team VPY</h1>
+
+      <nav>
+          <a href="./home" class="active">Home</a>
+          <a href="./about">About</a>
+         
+      </nav>
+  </header>
+
     <div class="container"><h1>Accident Prediction</h1>
         <h2>Enter Below Details</h2>
     <form id="predictionForm">
@@ -144,7 +226,6 @@
         <option value="36">Vijayapur (Bijapur)</option>
         <option value="37">Yadgir</option>
       </select>
-
       <label for="accident_location">District:</label>
       <select name="accident_location" id="accident_location">
         <option value="0">City/Town</option>
@@ -152,7 +233,6 @@
         <option value="2">Villages settlement</option>
       </select>
 
-      
       <label>Number Of Vehicles:</label>
       <input
         type="text"
@@ -173,41 +253,41 @@
    
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("predictionForm").addEventListener("submit", async function (event) {
-                event.preventDefault();
-        
-                // Create a FormData object from the form element
-                const formData = new FormData(document.getElementById("predictionForm"));
-        
-                try {
-                    // Send a POST request to the server with the form data
-                    const response = await fetch('/predict', {
-                        method: 'POST',
-                        body: formData
-                    });
-        
-                    // Check if the response is OK
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-        
-                    // Parse the JSON response
-                    const data = await response.json();
-        
-                    // Display the prediction result
-                    alert(`Predicted Severity: ${data.severity}`)
-                    document.getElementById('prediction_result').innerText = `Predicted Severity: ${data.severity}`;
-                    
-                } catch (error) {
-                    console.error("Error predicting:", error);
-                    alert("Prediction failed");
-                }
-            });
-        });
-        
-        
-            </script>
+      document.addEventListener("DOMContentLoaded", function () {
+          document.getElementById("predictionForm").addEventListener("submit", async function (event) {
+              event.preventDefault();
+      
+              // Create a FormData object from the form element
+              const formData = new FormData(document.getElementById("predictionForm"));
+      
+              try {
+                  // Send a POST request to the server with the form data
+                  const response = await fetch('/predict', {
+                      method: 'POST',
+                      body: formData
+                  });
+      
+                  // Check if the response is OK
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+      
+                  // Parse the JSON response
+                  const data = await response.json();
+      
+                  // Display the prediction result
+                  alert(`Predicted Severity: ${data.severity}`)
+                  document.getElementById('prediction_result').innerText = `Predicted Severity: ${data.severity}`;
+                  
+              } catch (error) {
+                  console.error("Error predicting:", error);
+                  alert("Prediction failed");
+              }
+          });
+      });
+      
+      
+          </script>
     <div class="chatbot"> <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
       <script src="https://mediafiles.botpress.cloud/555fcf38-e3fe-4d89-bb69-78c3222cee83/webchat/config.js" defer></script>
       </div>

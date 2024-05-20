@@ -163,6 +163,20 @@
     [type="button"]:hover {
       background-color: #802ee4;
     }
+
+    [type="submit"] {
+      background-color: #7a2cc8;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    [type="submit"]:hover {
+      background-color: #802ee4;
+    }
+
     option {
       background-color: #7a2cc8; /* Default background color for options */
       color: white; /* Default text color for options */
@@ -218,7 +232,7 @@
           name="login_form"
           id="login_form"
           method="post"
-          action="#"
+          action="/login"
           enctype="multipart/form-data"
         >
           <div class="col-sm-4">
@@ -262,6 +276,7 @@
               </script>
             </div>
             <p id="error"></p>
+            <span id="log">
             <button
               type="button"
               id="login"
@@ -270,6 +285,7 @@
             >
               Login
             </button>
+          </span>
             <button
               type="button"
               id="forgot_password"
@@ -284,25 +300,22 @@
         </form>
       </div>
       <div class="container2">
-        <h1>Face ID Verification</h1>
-
         {% if capturing %}
-        <h2>Capturing faces</h2>
+        <h1>Face ID Verification</h1>
+        <h2>Capturing faces for {{ name }}</h2>
         <img src="{{ url_for('video_feed') }}" width="640" height="480" />
+        <button id="final" type="submit">log in </button>
         {% else %}
-        <form action="/login" method="post">
-          <label for="name">Enter Your email:</label>
-          <input type="text" id="name" name="name" required />
-          <button id="face" type="submit">Capture Face</button>
-        </form>
-        <br />
+        <br/>
         <h2>Instructions for Log in:</h2>
         <ul>
-          <li>Firstly you will have to verify your face.</li>
+          <li>Firstly you can fill up your credentials and log into the website.</li>
           <li>
-            Then you can fill up your credentials and log into the website
+            Then you will have to verify your face ID.
           </li>
+          <li>After Face ID Verification Click on log in</li>
         </ul>
+        
         {% endif %}
       </div>
     </main>
@@ -353,7 +366,18 @@
               if (user.emailVerified) {
                 console.log("User logged in:", user);
                 // alert(`${user.email} logged in successfully!`);
-                window.location.href = "./home";
+
+
+                // window.location.href = "./home";
+
+                document.getElementById("log").innerHTML = `<button
+              type="submit"
+              id="login"
+              name="login"
+              class="btn btn-success"
+            >
+              Start Face ID
+            </button>`;
                 document.getElementById("logout").style.display = "block";
               } else {
                 alert("Please verify your email before logging in.");
@@ -365,7 +389,7 @@
               console.error("Login error:", errorCode, errorMessage);
               // alert(`Error: ${errorMessage}`);
               let error_msg = document.getElementById("error");
-              error_msg.innerHTML = `credentials already used`;
+              error_msg.innerHTML = `Credentials Invaild`;
             });
       });
 
@@ -392,6 +416,10 @@
               );
               // alert(`Error: ${errorMessage}`);
             });
+        });
+
+        document.getElementById("final").addEventListener("click", async function(){
+          window.location.href = "./home";
         });
   </script>
 </html>

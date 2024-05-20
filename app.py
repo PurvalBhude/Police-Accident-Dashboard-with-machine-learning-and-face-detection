@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Response
 import pickle
 import numpy as np
 import gzip
@@ -223,9 +223,10 @@ def video_feed_face():
 @app.route('/login', methods = ['GET','POST'])
 def login():
     global name
+    print(request.method)
     if request.method == 'POST':
-        name = request.form['name']
-        return render_template("login.html", capturing=True)
+        name = request.form['login_email']
+        return render_template("login.html", capturing=True, name=name)
     return render_template("login.html",capturing=False)
 
 
@@ -236,7 +237,7 @@ def capture():
     if request.method == 'POST':
         capture_name = request.form['name']
         capturing_faces = True
-        return render_template('capture.html', capturing=True)
+        return render_template('capture.html', capturing=True , capture_name=capture_name)
     return render_template('capture.html', capturing=False)
 
 @app.route('/signup')
