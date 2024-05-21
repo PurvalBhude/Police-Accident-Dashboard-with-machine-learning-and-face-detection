@@ -5,6 +5,7 @@ A project for the Karnataka State Police Hackathon on Road Accident Prediction u
 You can access the dataset [here](https://drive.google.com/drive/folders/1iHHYRkGRhYfO-lTaEjnrkO-QQE428WLU).
 
 # To Run 
+pip install -r requirements.txt
 python app.py
 
 
