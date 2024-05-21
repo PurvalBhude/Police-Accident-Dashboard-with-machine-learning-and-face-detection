@@ -18,7 +18,7 @@ def maxindex(arr):
     return max_index
 
 # video = cv2.VideoCapture(0)
-facedetect = cv2.CascadeClassifier('resources\haarcascade_frontalface_default.xml')
+facedetect = cv2.CascadeClassifier('resources/haarcascade_frontalface_default.xml')
 
 # Global variables for capturing faces
 capturing_faces = False
@@ -249,4 +249,4 @@ def msg():
 
 
 if __name__ == '__main__':
-    app.run(port=4949, host="0.0.0.0")
+    app.run(host="0.0.0.0")
