@@ -42,7 +42,7 @@ The above image is the Home page of the website from where we can access the oth
 *Figure 1.2* 
 <p align="center">
 Description Page
-  <img src="https://drive.google.com/file/d/1ImlcU7H3TIYEz3Lr-urnM62M8rbZ7VUA/view?usp=drive_link" alt="Description Page">
+  <img src="https://drive.google.com/file/d/1xSbmsTEmUdnMXuIN7j35dpmNwQfgj5C_/view?usp=sharing" alt="Description Page">
 </p>
 
 The above image shows the Description of the Project and here we can use the Prediction and Analysis option which gives the analysis of the accident data and the prediction of severity of the accident on the given input variables.
@@ -50,7 +50,7 @@ The above image shows the Description of the Project and here we can use the Pre
 *Figure 1.3* 
 <p align="center">
 Prediction Page
-  <img src="" alt="Prediction Page">
+  <img src="https://drive.google.com/file/d/1ImlcU7H3TIYEz3Lr-urnM62M8rbZ7VUA/view?usp=sharing" alt="Prediction Page">
 </p>
 
 The above image shows the prediction after we put in the input for District Name, Weather, Number of Vehicles involved, Latitude, and Longitude. This will predict the Severity over these inputs and would show as output.
@@ -74,7 +74,7 @@ This image shows the Heat map for accidents and also marks the hotspots for high
 *Figure 1.6* 
 <p align="center">
 Heat map
-  <img src="https://drive.google.com/file/d/1xU28-sFRZN10pXu_cGDI-o7u4lfXhOLJ/view?usp=drive_link" alt="face authentication ">
+  <img src="https://drive.google.com/file/d/1xU28-sFRZN10pXu_cGDI-o7u4lfXhOLJ/view?usp=sharing" alt="face authentication ">
 </p>
 
 This image shows the Heat map for accidents and also marks the hotspots for high accident areas from the website.
