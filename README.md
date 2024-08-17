@@ -1,5 +1,5 @@
 # Accident-Analysis-Prediction-and-Analysis-Team-VPY
-A project for the Karnataka State Police Hackathon on Road Accident Prediction using user's Location and weather conditions by applying Machine Learning concepts.
+A project developed while Karnataka State Police Hackathon on Road Accident Prediction using user's Location and weather conditions by applying Machine Learning concepts.
 
 ## DataSet
 You can access the dataset [here](https://drive.google.com/drive/folders/1iHHYRkGRhYfO-lTaEjnrkO-QQE428WLU).
@@ -93,3 +93,11 @@ We have created an AI Bot that would give us information on the dataset provided
 The Bot is in its Beta version.
 
 To access the Bot, we can see it on the website at the bottom right corner on every page of the site.
+
+## Contributing
+Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request.
+
+## License
+This project is licensed under the MIT License. See the <a href="https://github.com/PurvalBhude/Police-Accident-Dashboard-with-machine-learning-and-face-detection/blob/main/LICENSE">LICENSE</a> file for details.
+
+Made with ❤️ by Purval Bhude. For more about me and my work, visit my <a href="https://purvalbhude.github.io/Portfolio-Website/">Portfolio</a> or <a href="www.linkedin.com/in/purvalbhude">LinkedIn</a>.
